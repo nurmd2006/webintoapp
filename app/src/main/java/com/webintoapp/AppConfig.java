@@ -8,7 +8,7 @@ public class AppConfig {
     // Uncomment ONLY ONE of the options below.
 
     // Option A: REMOTE RESOURCE (Web URL)
-    public static final String URL_TO_LOAD = "http://toffeex.wuaze.com/";
+    public static final String URL_TO_LOAD = "https://esportslivepk.site/";
 
     // Option B: LOCAL RESOURCE (Local HTML file from assets folder)
     // public static final String URL_TO_LOAD = "file:///android_asset/index.html";
