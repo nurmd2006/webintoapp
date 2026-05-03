@@ -1,4 +1,4 @@
-package com.torongoplus;
+package com.webintoapp;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
