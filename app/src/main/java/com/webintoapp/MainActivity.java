@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -28,11 +27,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // 🔥 KEEP SCREEN ALWAYS ON (MAIN FIX)
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         if (!AppConfig.SHOW_STATUS_BAR) {
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
-                               WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            getWindow().setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            );
         }
-        
+
         setContentView(R.layout.activity_main);
 
         mWebView = findViewById(R.id.webView);
@@ -51,11 +55,14 @@ public class MainActivity extends AppCompatActivity {
         webSettings.setBuiltInZoomControls(AppConfig.ENABLE_ZOOM_CONTROLS);
         webSettings.setDisplayZoomControls(false);
         webSettings.setAllowFileAccess(true);
-        
+
         // Essential for HTML5 Video
         webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
 
         mWebView.setWebViewClient(new WebViewClient());
+
+        // 🔥 Extra safety (sometimes helps on some devices)
+        mWebView.setKeepScreenOn(true);
 
         // Handling HTML5 Fullscreen Video
         mWebView.setWebChromeClient(new WebChromeClient() {
